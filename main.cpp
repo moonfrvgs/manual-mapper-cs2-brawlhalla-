@@ -484,8 +484,7 @@ bool manual_map(_In_ std::string_view process_window_name, _In_ const char* dll_
 		container::error_handler("[-] couldn't write remote stub");
     }
 
-	IMAGE_TLS_DIRECTORY* tls_directory = (IMAGE_TLS_DIRECTORY*)((byte*)allocation + nt->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_TLS].VirtualAddress);
-    
+
 
     HANDLE thread = CreateRemoteThread(hijack.retrieve_handle(), nullptr, 0, (LPTHREAD_START_ROUTINE)remote_stub, nullptr, 0, nullptr);
     if(!thread) {
